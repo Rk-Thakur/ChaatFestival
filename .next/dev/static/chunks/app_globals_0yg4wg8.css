@@ -569,6 +569,10 @@
     animation: var(--animate-pulse-diya);
   }
 
+  .cursor-not-allowed {
+    cursor: not-allowed;
+  }
+
   .touch-none {
     touch-action: none;
   }
@@ -906,6 +910,10 @@
     line-height: var(--tw-leading, var(--text-sm--line-height));
   }
 
+  .text-\[8px\] {
+    font-size: 8px;
+  }
+
   .text-\[10\.5px\] {
     font-size: 10.5px;
   }
@@ -965,6 +973,26 @@
 
   .text-white {
     color: var(--color-white);
+  }
+
+  .text-white\/25 {
+    color: #ffffff40;
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .text-white\/25 {
+      color: color-mix(in oklab, var(--color-white) 25%, transparent);
+    }
+  }
+
+  .text-white\/30 {
+    color: #ffffff4d;
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .text-white\/30 {
+      color: color-mix(in oklab, var(--color-white) 30%, transparent);
+    }
   }
 
   .text-white\/50 {
@@ -1232,6 +1260,10 @@
     .sm\:text-xs {
       font-size: var(--text-xs);
       line-height: var(--tw-leading, var(--text-xs--line-height));
+    }
+
+    .sm\:text-\[9px\] {
+      font-size: 9px;
     }
 
     .sm\:text-\[11px\] {

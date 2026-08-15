@@ -835,17 +835,32 @@ function PlaylistTabs({ activeIndex, onSelect }) {
         className: "no-scrollbar max-w-full overflow-x-auto",
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
             className: "flex w-max gap-1 rounded-full border border-amber-500/20 bg-black/40 p-1 backdrop-blur-xl",
-            children: __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$tracks$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["PLAYLISTS"].map((playlist, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+            children: __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$tracks$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["PLAYLISTS"].map((playlist, i)=>{
+                const disabled = playlist.tracks.length === 0;
+                return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                     type: "button",
-                    onClick: ()=>onSelect(i),
+                    onClick: ()=>!disabled && onSelect(i),
+                    disabled: disabled,
                     "aria-pressed": i === activeIndex,
-                    className: `rounded-full px-2.5 py-1 text-center text-[10px] font-medium tracking-wide whitespace-nowrap transition-colors sm:text-[11px] ${i === activeIndex ? "bg-gradient-to-r from-saffron to-vermillion text-white shadow-[0_0_12px_rgba(255,119,0,0.5)]" : "text-white/60 hover:text-white/85"}`,
-                    children: playlist.name
-                }, playlist.id, false, {
+                    "aria-disabled": disabled,
+                    className: `rounded-full px-2.5 py-1 text-center text-[10px] font-medium tracking-wide whitespace-nowrap transition-colors sm:text-[11px] ${disabled ? "cursor-not-allowed text-white/30" : i === activeIndex ? "bg-gradient-to-r from-saffron to-vermillion text-white shadow-[0_0_12px_rgba(255,119,0,0.5)]" : "text-white/60 hover:text-white/85"}`,
+                    children: [
+                        playlist.name,
+                        playlist.comingSoon && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                            className: "ml-1 text-[8px] tracking-wider text-white/25 uppercase sm:text-[9px]",
+                            children: "Soon"
+                        }, void 0, false, {
+                            fileName: "[project]/components/Player.tsx",
+                            lineNumber: 259,
+                            columnNumber: 17
+                        }, this)
+                    ]
+                }, playlist.id, true, {
                     fileName: "[project]/components/Player.tsx",
-                    lineNumber: 240,
-                    columnNumber: 11
-                }, this))
+                    lineNumber: 242,
+                    columnNumber: 13
+                }, this);
+            })
         }, void 0, false, {
             fileName: "[project]/components/Player.tsx",
             lineNumber: 238,
@@ -986,6 +1001,7 @@ function Player() {
         setCurrentTime(time);
     };
     const handlePlaylistSelect = (index)=>{
+        if (__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$tracks$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["PLAYLISTS"][index].tracks.length === 0) return;
         setPlaylistIndex(index);
         setTrackIndex(0);
     };
@@ -997,7 +1013,7 @@ function Player() {
                 onSelect: handlePlaylistSelect
             }, void 0, false, {
                 fileName: "[project]/components/Player.tsx",
-                lineNumber: 403,
+                lineNumber: 416,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1010,12 +1026,12 @@ function Player() {
                             isPlaying: isPlaying
                         }, void 0, false, {
                             fileName: "[project]/components/Player.tsx",
-                            lineNumber: 409,
+                            lineNumber: 422,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/Player.tsx",
-                        lineNumber: 408,
+                        lineNumber: 421,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1024,12 +1040,12 @@ function Player() {
                             track: currentTrack
                         }, void 0, false, {
                             fileName: "[project]/components/Player.tsx",
-                            lineNumber: 413,
+                            lineNumber: 426,
                             columnNumber: 11
                         }, this)
                     }, currentTrack.id, false, {
                         fileName: "[project]/components/Player.tsx",
-                        lineNumber: 412,
+                        lineNumber: 425,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1041,12 +1057,12 @@ function Player() {
                             isPlaying: isPlaying
                         }, void 0, false, {
                             fileName: "[project]/components/Player.tsx",
-                            lineNumber: 417,
+                            lineNumber: 430,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/Player.tsx",
-                        lineNumber: 416,
+                        lineNumber: 429,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1056,12 +1072,12 @@ function Player() {
                             duration: duration
                         }, void 0, false, {
                             fileName: "[project]/components/Player.tsx",
-                            lineNumber: 426,
+                            lineNumber: 439,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/Player.tsx",
-                        lineNumber: 425,
+                        lineNumber: 438,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1073,24 +1089,24 @@ function Player() {
                             onNext: handleNext
                         }, void 0, false, {
                             fileName: "[project]/components/Player.tsx",
-                            lineNumber: 430,
+                            lineNumber: 443,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/Player.tsx",
-                        lineNumber: 429,
+                        lineNumber: 442,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/Player.tsx",
-                lineNumber: 405,
+                lineNumber: 418,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/Player.tsx",
-        lineNumber: 402,
+        lineNumber: 415,
         columnNumber: 5
     }, this);
 }
@@ -1471,103 +1487,44 @@ __turbopack_context__.s([
 ]);
 const PLAYLISTS = [
     {
-        id: "sandhya-arghya-classics",
-        name: "Sandhya Arghya Classics",
+        id: "sharda-sinha",
+        name: "Sharda Sinha",
         tracks: [
             {
-                id: "sa-1",
-                title: "Suruj Bhaile Bihaan",
+                id: "ss-1",
+                title: "Kelwa Ke Paat Par",
                 artist: "Sharda Sinha",
                 phase: "Sandhya Arghya",
-                year: 2019,
+                year: 2024,
                 duration: 300,
-                videoId: "u2rkSu5LYbk"
+                videoId: "y7hrM7PouQM"
             },
             {
-                id: "sa-2",
-                title: "Chhath Pooja Geet Special",
+                id: "ss-2",
+                // Title unconfirmed — flagged to the user, do not treat as final.
+                title: "Chhath Geet ",
                 artist: "Sharda Sinha",
-                phase: "Sandhya Arghya",
-                year: 2020,
+                phase: "Usha Arghya",
+                year: 2023,
                 duration: 280,
-                videoId: "B4WSHkT6moc"
+                videoId: "KWvgJvM2zT0"
             },
             {
-                id: "sa-3",
-                title: "Chhath Geet",
+                id: "ss-3",
+                title: "Dukhwa Mitayin Chhathi Maiya",
                 artist: "Sharda Sinha",
-                phase: "Sandhya Arghya",
-                year: 2018,
+                phase: "Village Folk",
+                year: 2024,
                 duration: 260,
-                videoId: "cC4ORxmpUDQ"
+                videoId: "NkDiSj9c1EA"
             }
         ]
     },
     {
-        id: "morning-usha-arghya",
-        name: "Morning Usha Arghya",
-        tracks: [
-            {
-                id: "ua-1",
-                title: "Uga Hai Suraj Dev",
-                artist: "Anuradha Paudwal",
-                phase: "Usha Arghya",
-                year: 2017,
-                duration: 270,
-                videoId: "6e6Hp6R5SVU"
-            },
-            {
-                id: "ua-2",
-                title: "Chhath Pooja Ke Geet",
-                artist: "Anuradha Paudwal, Sharda Sinha",
-                phase: "Usha Arghya",
-                year: 2019,
-                duration: 290,
-                videoId: "CGQ-3EFVZfA"
-            },
-            {
-                id: "ua-3",
-                title: "Non Stop Chhath Pooja Geet",
-                artist: "Sharda Sinha, Anuradha Paudwal",
-                phase: "Usha Arghya",
-                year: 2021,
-                duration: 310,
-                videoId: "GMQGZjFn6-4"
-            }
-        ]
-    },
-    {
-        id: "nostalgic-folk-memories",
-        name: "Nostalgic Folk Memories",
-        tracks: [
-            {
-                id: "vf-1",
-                title: "Pahile Pahil Chhathi Maiya",
-                artist: "Sharda Sinha",
-                phase: "Village Folk",
-                year: 2016,
-                duration: 240,
-                videoId: "DG8F-csoRAQ"
-            },
-            {
-                id: "vf-2",
-                title: "Top Chhath Pooja Geet",
-                artist: "Sharda Sinha, Anuradha Paudwal",
-                phase: "Village Folk",
-                year: 2020,
-                duration: 300,
-                videoId: "XE3Xw21GFPI"
-            },
-            {
-                id: "vf-3",
-                title: "Chhathi Maiya Chhath Pooja Geet",
-                artist: "Sharda Sinha",
-                phase: "Village Folk",
-                year: 2018,
-                duration: 260,
-                videoId: "BsAFCc901MM"
-            }
-        ]
+        id: "more-artists",
+        name: "More Artists",
+        tracks: [],
+        comingSoon: true
     }
 ];
 }),

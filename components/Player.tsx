@@ -236,21 +236,33 @@ function PlaylistTabs({
   return (
     <div className="no-scrollbar max-w-full overflow-x-auto">
       <div className="flex w-max gap-1 rounded-full border border-amber-500/20 bg-black/40 p-1 backdrop-blur-xl">
-        {PLAYLISTS.map((playlist, i) => (
-          <button
-            key={playlist.id}
-            type="button"
-            onClick={() => onSelect(i)}
-            aria-pressed={i === activeIndex}
-            className={`rounded-full px-2.5 py-1 text-center text-[10px] font-medium tracking-wide whitespace-nowrap transition-colors sm:text-[11px] ${
-              i === activeIndex
-                ? "bg-gradient-to-r from-saffron to-vermillion text-white shadow-[0_0_12px_rgba(255,119,0,0.5)]"
-                : "text-white/60 hover:text-white/85"
-            }`}
-          >
-            {playlist.name}
-          </button>
-        ))}
+        {PLAYLISTS.map((playlist, i) => {
+          const disabled = playlist.tracks.length === 0;
+          return (
+            <button
+              key={playlist.id}
+              type="button"
+              onClick={() => !disabled && onSelect(i)}
+              disabled={disabled}
+              aria-pressed={i === activeIndex}
+              aria-disabled={disabled}
+              className={`rounded-full px-2.5 py-1 text-center text-[10px] font-medium tracking-wide whitespace-nowrap transition-colors sm:text-[11px] ${
+                disabled
+                  ? "cursor-not-allowed text-white/30"
+                  : i === activeIndex
+                    ? "bg-gradient-to-r from-saffron to-vermillion text-white shadow-[0_0_12px_rgba(255,119,0,0.5)]"
+                    : "text-white/60 hover:text-white/85"
+              }`}
+            >
+              {playlist.name}
+              {playlist.comingSoon && (
+                <span className="ml-1 text-[8px] tracking-wider text-white/25 uppercase sm:text-[9px]">
+                  Soon
+                </span>
+              )}
+            </button>
+          );
+        })}
       </div>
     </div>
   );
@@ -394,6 +406,7 @@ export default function Player() {
   };
 
   const handlePlaylistSelect = (index: number) => {
+    if (PLAYLISTS[index].tracks.length === 0) return;
     setPlaylistIndex(index);
     setTrackIndex(0);
   };
