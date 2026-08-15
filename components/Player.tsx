@@ -7,7 +7,7 @@ import { PLAYLISTS, type Track } from "@/lib/tracks";
 import { YT_PLAYER_STATE, loadYouTubeIframeAPI, type YTPlayer } from "@/lib/youtube";
 
 const GLASS =
-  "border border-amber-500/20 bg-gradient-to-b from-amber-950/30 via-slate-950/60 to-black/80 backdrop-blur-3xl backdrop-saturate-[1.8] shadow-[0_16px_48px_-12px_rgba(0,0,0,0.9),inset_0_1px_0_rgba(255,200,100,0.25)]";
+  "border border-amber-500/20 bg-gradient-to-b from-amber-950/15 via-slate-950/30 to-black/45 backdrop-blur-2xl backdrop-saturate-[1.8] shadow-[0_16px_48px_-12px_rgba(0,0,0,0.9),inset_0_1px_0_rgba(255,200,100,0.25)]";
 
 function formatTime(seconds: number): string {
   if (!Number.isFinite(seconds) || seconds < 0) return "0:00";
