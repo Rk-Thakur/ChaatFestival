@@ -2,11 +2,11 @@
 
 import { useEffect, useState } from "react";
 
-type IstTime = { hour: string; minute: string; dayPeriod: string };
+type NptTime = { hour: string; minute: string; dayPeriod: string };
 
-function formatIST(date: Date): IstTime {
-  const parts = new Intl.DateTimeFormat("en-IN", {
-    timeZone: "Asia/Kolkata",
+function formatNPT(date: Date): NptTime {
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone: "Asia/Kathmandu",
     hour: "2-digit",
     minute: "2-digit",
     hour12: true,
@@ -19,12 +19,12 @@ function formatIST(date: Date): IstTime {
   };
 }
 
-export default function KolkataClock() {
-  const [time, setTime] = useState<IstTime | null>(null);
+export default function KathmanduClock() {
+  const [time, setTime] = useState<NptTime | null>(null);
 
   useEffect(() => {
-    setTime(formatIST(new Date()));
-    const id = setInterval(() => setTime(formatIST(new Date())), 1000);
+    setTime(formatNPT(new Date()));
+    const id = setInterval(() => setTime(formatNPT(new Date())), 1000);
     return () => clearInterval(id);
   }, []);
 
@@ -39,7 +39,7 @@ export default function KolkataClock() {
         </span>
       </div>
       <span className="text-[10px] tracking-wider text-white/50 uppercase sm:text-[11px]">
-        IST · Ghat Time
+        NPT · Ghat Time
       </span>
     </div>
   );

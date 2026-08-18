@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react";
 
-// Chhath Puja (Kartik 29, 2083 B.S.) = Sunday, 15 Nov 2026, midnight IST.
-const TARGET_MS = new Date("2026-11-15T00:00:00+05:30").getTime();
+// Chhath Puja (Kartik 29, 2083 B.S.) = Sunday, 15 Nov 2026, midnight NPT.
+const TARGET_MS = new Date("2026-11-15T00:00:00+05:45").getTime();
 
 type Remaining = {
   days: number;

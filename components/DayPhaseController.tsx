@@ -6,8 +6,8 @@ type Phase = "dawn" | "day" | "dusk" | "night";
 
 function computePhase(): Phase {
   const hour = Number(
-    new Intl.DateTimeFormat("en-IN", {
-      timeZone: "Asia/Kolkata",
+    new Intl.DateTimeFormat("en-US", {
+      timeZone: "Asia/Kathmandu",
       hour: "2-digit",
       hour12: false,
     }).format(new Date()),
